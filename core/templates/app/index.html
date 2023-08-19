@@ -1,0 +1,215 @@
+<!-- myproject/myapp/templates/myapp/home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conference Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #2a2a2a;
+        }
+
+        .username {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 12px 0 0;
+        }
+
+        .username input {
+            width:  100%;
+            height: 29px;
+            padding: 5px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            background: #eeeeee;
+            color: #2a2a2a;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .email {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 0 12px 0 0;
+        }
+
+        .email input {
+            width:  100%;
+            height: 29px;
+            padding: 5px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            background: #eeeeee;
+            color: #2a2a2a;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .phone {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 0 12px 0 0;
+        }
+
+        .phone input {
+            width:  100%;
+            height: 29px;
+            padding: 5px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            background: #eeeeee;
+            color: #2a2a2a;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .payment {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .payment select {
+            width:  100%;
+            height: 39px;
+            padding: 6px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            background: #eeeeee;
+            color: #2a2a2a;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .attendance {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .attendance select {
+            width:  100%;
+            height: 39px;
+            padding: 6px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            background: #eeeeee;
+            color: #2a2a2a;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .date {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .date input {
+            width:  100%;
+            height: 39px;
+            padding: 6px;
+            border-radius: 4px;
+            border: none;
+            outline: none;
+            background: #eeeeee;
+            color: #2a2a2a;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        button {
+            background-color: #5c9c5c;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            height: 40px;
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: 15px;
+            font: 400;
+        }
+    </style>
+</head>
+<body>
+    <h1>Conference Registration</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="username">
+            <div class="first__name">
+                <h3>First Name</h3>
+                <input type="text" id="firstname" name="firstname">
+            </div>
+            
+            
+            <div class="last__name">
+                <h3>Lßast Name</h3>
+                <input type="text" id="lastname" name="lastname">
+            </div>
+        </div>
+        
+        <div class="email">
+            <h3>Email</h3>
+            <input type="email" id="email" name="email">
+        </div>
+        <div class="phone">
+            <h3>Phone Number</h3>
+            <input type="tel" id="phone" name="phone">
+        </div>
+        
+        <div class="payment">
+            <h3>Mode of Payment</h3>
+            <select id="payment" name="payment">
+                <option value="momo">Momo</option>
+                <option value="bank">Bank</option>
+            </select>
+        </div>
+        
+        <div class="attendance">
+            <h3>Attendance</h3>
+            <select id="attendance" name="attendance">
+                <option value="speaker">Speaker</option>
+                <option value="audience">Audience</option>
+            </select>
+        </div>
+        
+        <div class="date">
+            <h3>Date/h3>
+            <input type="date" id="date" name="date">
+        </div>
+        
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
