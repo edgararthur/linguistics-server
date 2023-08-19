@@ -14,5 +14,5 @@ class Attendance(models.Model):
     date_of_payment = models.DateField()
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name} {self.email} {self.phone_number} {self.mode_of_payment} {self.attendance} {self.date_of_payment}"
 
