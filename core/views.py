@@ -11,4 +11,4 @@ def attend_conference(request):
         form = AttendanceForm()
     
     context = {'form': form}
-    return render(request, 'attend.html', context)
+    return render(request, 'app/index.html', context)
