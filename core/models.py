@@ -16,3 +16,24 @@ class Attendance(models.Model):
     def __str__(self):
         return f"{self.first_name} {self.last_name} {self.email} {self.phone_number} {self.mode_of_payment} {self.attendance} {self.date_of_payment}"
 
+
+# class Members(models.Model):
+#     title = models.CharField(max_length=25)
+#     first_name = models.CharField(max_length=200)
+#     last_name = models.CharField(max_length=200)
+#     email = models.CharField(max_length=50)
+#     phone_number = models.PhoneNumberField(_(""))
+
+#     def __str__(self):
+#         return f"{first_name} {last_name}"
+
+
+class Signup(models.Model):
+    first_name = models.CharField(max_length=70)
+    last_name = models.CharField(max_length=70)
+    email = models.EmailField(max_length=254)
+    password = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+    
