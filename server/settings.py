@@ -94,7 +94,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'server.wsgi.application'
 
 connection_string = os.environ.get('AZURE_POSTGRESQL_CONNECTIONSTRING')
-parameters ={pair.split('='): pair.split('=')[1] for pair in connection_string.split(' ')}
+if connection_string:
+    parameters = {pair.split('=')[0]: pair.split('=')[1] for pair in connection_string.split()}
+else:
+    raise ValueError("AZURE_POSTGRESQL_CONNECTIONSTRING environment variable is not set.")
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
