@@ -22,14 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3i5xg0@&(jo135f1&3+r9b#@=9(z@r5s#t-dgo304v2v5nlsth'
+# SECRET_KEY = 'django-insecure-3i5xg0@&(jo135f1&3+r9b#@=9(z@r5s#t-dgo304v2v5nlsth'
+SECRET_KEY = os.environ['SECRET']
 
 # SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['app-linguisticsgh.onrender.com', '*.onrender.com', 'localhost',]
+ALLOWED_HOSTS = ['app-linguisticsgh.onrender.com', '*.onrender.com', 'localhost', '127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS =  ['https://' + '*.onrender.com']
 
 
 # Application definition
@@ -41,7 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    'management',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -59,7 +65,7 @@ ROOT_URLCONF = 'server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,8 +78,23 @@ TEMPLATES = [
     },
 ]
 
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'context_processors': [
+#                 # ...
+#             ],
+#         },
+#     },
+# ]
+
 WSGI_APPLICATION = 'server.wsgi.application'
 
+connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+parameters ={pair.split('='): pair.split('=')[1] for pair in connection_string.split(' ')}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -85,8 +106,18 @@ WSGI_APPLICATION = 'server.wsgi.application'
 #     }  
 # }
 
+# DATABASES = {
+#     'default': dj_database_url.parse("postgres://linguistics_user:54LOOBlUC4SK0tth2AeKSO5nyVkPAroI@dpg-cjg80ij37aks73b2dojg-a.oregon-postgres.render.com/linguistics")
+# }
+
 DATABASES = {
-    'default': dj_database_url.parse("postgres://linguistics_user:54LOOBlUC4SK0tth2AeKSO5nyVkPAroI@dpg-cjg80ij37aks73b2dojg-a.oregon-postgres.render.com/linguistics")
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': parameters['dbname'],
+        'HOST': parameters['host'],
+        'USER': parameters['user'],
+        'PASSWORD': parameters['password']
+    }  
 }
 
 # password: 54LOOBlUC4SK0tth2AeKSO5nyVkPAroI;
@@ -131,7 +162,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -141,3 +174,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_ALL_ORIGINS = False  # Set this to True to allow all origins (not recommended for production).
+CORS_ALLOW_CREDENTIALS = True  # If your API uses cookies or authentication.
+CORS_ALLOW_METHODS = ['GET', 'OPTIONS']  # Adjust this to include other HTTP methods you need.
+CORS_ALLOW_HEADERS = [
+    'Accept',
+    'Accept-Language',
+    'Content-Language',
+    'Content-Type',
+    'Authorization',
+]
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:5500',  # Add the origin of your website here.
+]

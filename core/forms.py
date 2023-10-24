@@ -1,5 +1,5 @@
 from django import forms
-from .models import Attendance
+from .models import Attendance, Signup
 
 class AttendanceForm(forms.ModelForm):
     class Meta:
@@ -9,3 +9,10 @@ class AttendanceForm(forms.ModelForm):
     date_of_payment = forms.DateField(
         widget=forms.DateInput(attrs={'type': 'date'}),
     )
+
+
+class SignUpForm(forms.ModelForm):
+    class Meta:
+        model = Signup
+        fields = ['first_name', 'last_name', 'email', 'password']
+
