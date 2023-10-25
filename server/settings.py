@@ -187,7 +187,8 @@ CORS_ALLOW_HEADERS = [
     'Authorization',
 ]
 CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:5500',  # Add the origin of your website here.
+    'http://127.0.0.1:5500',
+    'linguisticsghana.azurewebsites.net'
 ]
 
 # Change the admin site title
