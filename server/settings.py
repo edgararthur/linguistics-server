@@ -12,14 +12,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-3i5xg0@&(jo135f1&3+r9b#@=9(z@r5s#t-dgo304v2v5nlsth'
 SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = os.environ['SECRET_KEY']
-
-# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
+# DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
+DEBUG = False
 
-ALLOWED_HOSTS = ['app-linguisticsgh.onrender.com', '*.onrender.com', 'localhost', '127.0.0.1', 'https://linguisticsghana.azurewebsites.net/']
+ALLOWED_HOSTS = ['app-linguisticsgh.onrender.com', '*.onrender.com', 'localhost', '127.0.0.1', 'linguisticsghana.azurewebsites.net/']
 
 CSRF_TRUSTED_ORIGINS =  ['https://' + '*.onrender.com']
 
@@ -40,6 +38,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -165,7 +164,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
-STATIC_URL = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
