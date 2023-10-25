@@ -101,25 +101,25 @@ else:
 #     'default': dj_database_url.parse("postgres://linguistics_user:54LOOBlUC4SK0tth2AeKSO5nyVkPAroI@dpg-cjg80ij37aks73b2dojg-a.oregon-postgres.render.com/linguistics")
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': parameters['dbname'],
-#         'HOST': parameters['host'],
-#         'USER': parameters['user'],
-#         'PASSWORD': parameters['password']
-#     }  
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'verceldb',
-        'HOST': 'ep-delicate-river-94174470-pooler.us-east-1.postgres.vercel-storage.com',
-        'USER': 'default',
-        'PASSWORD': 'deUzb1JZj5pE'
+        'NAME': parameters['dbname'],
+        'HOST': parameters['host'],
+        'USER': parameters['user'],
+        'PASSWORD': parameters['password']
     }  
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'verceldb',
+#         'HOST': 'ep-delicate-river-94174470-pooler.us-east-1.postgres.vercel-storage.com',
+#         'USER': 'default',
+#         'PASSWORD': 'deUzb1JZj5pE'
+#     }  
+# }
 
 # password: 54LOOBlUC4SK0tth2AeKSO5nyVkPAroI;
 # username: linguistics_user;
