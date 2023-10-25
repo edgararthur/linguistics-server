@@ -10,14 +10,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-3i5xg0@&(jo135f1&3+r9b#@=9(z@r5s#t-dgo304v2v5nlsth'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-3i5xg0@&(jo135f1&3+r9b#@=9(z@r5s#t-dgo304v2v5nlsth'
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['app-linguisticsgh.onrender.com', '*.onrender.com', 'localhost', '127.0.0.1', 'linguisticsghana.azurewebsites.net/']
+ALLOWED_HOSTS = ['app-linguisticsgh.onrender.com', '*.onrender.com', 'localhost', '127.0.0.1', 'linguisticsghana.azurewebsites.net/', 'lag-api.azurewebsites.net']
 
 CSRF_TRUSTED_ORIGINS =  ['https://' + '*.onrender.com']
 
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -46,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -81,11 +81,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
-connection_string = os.environ.get('AZURE_POSTGRESQL_CONNECTIONSTRING')
-if connection_string:
-    parameters = {pair.split('=')[0]: pair.split('=')[1] for pair in connection_string.split()}
-else:
-    raise ValueError("AZURE_POSTGRESQL_CONNECTIONSTRING environment variable is not set.")
+# connection_string = os.environ.get('AZURE_POSTGRESQL_CONNECTIONSTRING')
+# if connection_string:
+#     parameters = {pair.split('=')[0]: pair.split('=')[1] for pair in connection_string.split()}
+# else:
+#     raise ValueError("AZURE_POSTGRESQL_CONNECTIONSTRING environment variable is not set.")
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -163,7 +163,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Use square brackets to create a list
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
