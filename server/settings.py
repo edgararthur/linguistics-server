@@ -19,7 +19,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['app-linguisticsgh.onrender.com', '*.onrender.com', 'localhost', '127.0.0.1', 'lag-api.azurewebsites.net', 'linguisticsghana.azurewebsites.net']
 
-CSRF_TRUSTED_ORIGINS =  ['https://' + '*.onrender.com', 'https://' + '*azurewebsites.net']
+CSRF_TRUSTED_ORIGINS =  ['https://' + '*.onrender.com', 'https://lag-api.azurewebsites.net', 'https://linguisticsghana.azurewebsites.net']
 
 
 # Application definition
