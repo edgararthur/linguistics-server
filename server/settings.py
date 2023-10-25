@@ -189,3 +189,6 @@ CORS_ALLOW_HEADERS = [
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:5500',  # Add the origin of your website here.
 ]
+
+# Change the admin site title
+ADMIN_SITE_HEADER = 'LAGhana'
