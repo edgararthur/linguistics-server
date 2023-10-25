@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-3i5xg0@&(jo135f1&3+r9b#@=9(z@r5s#t-dgo304v2v5nlsth
 # DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 DEBUG = True
 
-ALLOWED_HOSTS = ['app-linguisticsgh.onrender.com', '*.onrender.com', 'localhost', '127.0.0.1', 'linguisticsghana.azurewebsites.net/', 'lag-api.azurewebsites.net']
+ALLOWED_HOSTS = ['app-linguisticsgh.onrender.com', '*.onrender.com', 'localhost', '127.0.0.1', 'https://linguisticsghana.azurewebsites.net/', 'lag-api.azurewebsites.net']
 
 CSRF_TRUSTED_ORIGINS =  ['https://' + '*.onrender.com']
 
