@@ -90,26 +90,26 @@ else:
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }  
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }  
+}
 
 # DATABASES = {
 #     'default': dj_database_url.parse("postgres://linguistics_user:54LOOBlUC4SK0tth2AeKSO5nyVkPAroI@dpg-cjg80ij37aks73b2dojg-a.oregon-postgres.render.com/linguistics")
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': parameters['dbname'],
-        'HOST': parameters['host'],
-        'USER': parameters['user'],
-        'PASSWORD': parameters['password']
-    }  
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': parameters['dbname'],
+#         'HOST': parameters['host'],
+#         'USER': parameters['user'],
+#         'PASSWORD': parameters['password']
+#     }  
+# }
 
 # DATABASES = {
 #     'default': {
