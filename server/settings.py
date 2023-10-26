@@ -6,6 +6,10 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# Change the admin site title
+ADMIN_SITE_HEADER = 'LAGhana'
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -176,9 +180,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = False  # Set this to True to allow all origins (not recommended for production).
+CORS_ALLOW_ALL_ORIGINS = True  # Set this to True to allow all origins (not recommended for production).
 CORS_ALLOW_CREDENTIALS = True  # If your API uses cookies or authentication.
-CORS_ALLOW_METHODS = ['GET', 'OPTIONS']  # Adjust this to include other HTTP methods you need.
 CORS_ALLOW_HEADERS = [
     'Accept',
     'Accept-Language',
@@ -186,10 +189,23 @@ CORS_ALLOW_HEADERS = [
     'Content-Type',
     'Authorization',
 ]
+
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:5500',
-    'linguisticsghana.azurewebsites.net'
+    'http://127.0.0.1:5501',
+    'https://linguisticsghana.azurewebsites.net',
 ]
 
-# Change the admin site title
-ADMIN_SITE_HEADER = 'LAGhana'
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+]
+
+CORS_ALLOW_HEADERS = [
+    'Accept',
+    'Content-Type',
+]
+
