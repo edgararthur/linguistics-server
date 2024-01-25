@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Change the admin site title
-ADMIN_SITE_HEADER = 'LAGhana'
+ADMIN_SITE_HEADER = 'Linguistics Ghana Association'
 
 
 # Quick-start development settings - unsuitable for production
