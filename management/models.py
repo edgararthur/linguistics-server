@@ -24,10 +24,10 @@ class Leadership(models.Model):
     name = models.CharField(max_length=225)
     image = models.ImageField(upload_to="leadership/")
     postion = models.CharField(max_length=200)
-    year = models.DateField(auto_now_add=True)
+    year = models.DateField(auto_now_add=False)
 
     def __str__(self):
-        return f"{self.name} {self.postion}"
+        return f"{self.name}  {self.image}  {self.postion}  {self.year}"
 
 
 class Consultants(models.Model):
