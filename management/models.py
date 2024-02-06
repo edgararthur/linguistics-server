@@ -12,9 +12,17 @@ class News(models.Model):
 
 
 class Members(models.Model):
+    REGULAR_MEMBER = 'regular member'
+    HONARY_MEMBER = 'honary member'
+
+    MEMBERSHIPS = [
+        (REGULAR_MEMBER, 'regular member'),
+        (HONARY_MEMBER, 'honary member'),
+    ]
+
     name = models.CharField(max_length=225)
     image = models.ImageField(upload_to="members_images/")
-    type_of_membership = models.CharField(max_length=200)
+    type_of_membership = models.CharField(max_length=20, choices=MEMBERSHIPS)
 
     def __str__(self):
         return f"{self.name}"
@@ -23,7 +31,7 @@ class Members(models.Model):
 class Leadership(models.Model):
     name = models.CharField(max_length=225)
     image = models.ImageField(upload_to="leadership/")
-    postion = models.CharField(max_length=200)
+    position = models.CharField(max_length=200)
     year = models.DateField(auto_now_add=False)
 
     def __str__(self):
