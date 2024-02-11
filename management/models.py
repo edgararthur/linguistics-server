@@ -6,6 +6,7 @@ class News(models.Model):
     content = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='news_images/')
+    type = models.CharField(max_length=10, default="News")  # TODO: Add choices for different types of news?
 
     def __str__(self):
         return f"{self.title}"
@@ -35,16 +36,15 @@ class Leadership(models.Model):
     year = models.DateField(auto_now_add=False)
 
     def __str__(self):
-        return f"{self.name}  {self.image}  {self.postion}  {self.year}"
+        return f"{self.name}  {self.image}  {self.position}  {self.year}"
 
 
 class Consultants(models.Model):
     name = models.CharField(max_length=225)
-    type_of_consult = models.CharField(max_length=225)
+    area_of_expertise = models.CharField(max_length=225)
 
     def __str__(self):
-        return f"{self.name} {self.type_of_consult}"
-
+        return f"{self.name} {self.area_of_expertise}"
 
 class Collaborations(models.Model):
     title = models.CharField(max_length=225)
