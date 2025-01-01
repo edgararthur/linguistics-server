@@ -1,3 +1,14 @@
 {% extends "admin/base.html" %}
 
-{% block title %}LAG Administration{% endblock %}
+{% load static %}  
+
+{% block title %}Custom Admin Dashboard{% endblock %}
+
+{% block branding %}
+<h1><a href="{% url 'admin:index' %}">Linguistics Association of Ghana Admin Dashboard</a></h1>
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/custom_admin.css' %}">
+{% endblock %}

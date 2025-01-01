@@ -29,16 +29,39 @@ CSRF_TRUSTED_ORIGINS =  ['https://' + '*.onrender.com', 'https://lag-api.azurewe
 # Application definition
 
 INSTALLED_APPS = [
+    # 'grappelli',
+    # 'suit',
+    # 'jazzmin',
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'core',
     'management',
     'corsheaders',
+    'admin_tools',
+    'admin_tools.menu',
+    # 'admin_tools.dashboard',
+    # 'admin_tools.theming'
 ]
+
+
+# suit customization
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'Linguistics Association of Ghana Admin',
+    'MENU': [
+        {'label': 'Authentication', 'icon': 'icon-lock', 'models': ['auth.user', 'auth.group']},
+        {'label': 'Management', 'icon': 'icon-list-alt', 'models': [
+            'appname.leaderships',
+            'appname.members',
+        ]},
+        {'label': 'Reports', 'icon': 'icon-bar-chart', 'url': '/admin/reports/'},
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -94,42 +117,24 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }  
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }  
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'lag',
+        'USER': 'terror',
+        'PASSWORD': 'breakfast',
+        'HOST': 'localhost', 
+        'PORT': '5431',
+    }
 }
-
-# DATABASES = {
-#     'default': dj_database_url.parse("postgres://linguistics_user:54LOOBlUC4SK0tth2AeKSO5nyVkPAroI@dpg-cjg80ij37aks73b2dojg-a.oregon-postgres.render.com/linguistics")
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': parameters['dbname'],
-#         'HOST': parameters['host'],
-#         'USER': parameters['user'],
-#         'PASSWORD': parameters['password']
-#     }  
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'verceldb',
-#         'HOST': 'ep-delicate-river-94174470-pooler.us-east-1.postgres.vercel-storage.com',
-#         'USER': 'default',
-#         'PASSWORD': 'deUzb1JZj5pE'
-#     }  
-# }
-
-# password: 54LOOBlUC4SK0tth2AeKSO5nyVkPAroI;
-# username: linguistics_user;
-# database: linguistics;
-# host: dpg-cjg80ij37aks73b2dojg-a.oregon-postgres.render.com;
-# port: 5432;
 
 
 # Password validation

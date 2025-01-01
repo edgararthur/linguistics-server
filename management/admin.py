@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, Collaborations, Consultants, Members, Leadership
+from .models import News, Collaborations, Consultants, Members, Leadership, Publications
 
 admin.site.site_title = "Linguisitics Association of Ghana"
 admin.site.site_header = "Linguistics Association of Ghana"
@@ -10,3 +10,6 @@ admin.site.register(Collaborations)
 admin.site.register(Consultants)
 admin.site.register(Members)
 admin.site.register(Leadership)
+admin.site.register(Publications)
+
+admin.autodiscover()

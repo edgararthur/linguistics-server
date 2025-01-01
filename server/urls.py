@@ -12,6 +12,7 @@ urlpatterns = [
     path('signup/', sign_up, name='signup'),
     path('api/', include('management.urls')),
     path('admin/', admin.site.urls),
+    # path('grappelli/', include('grappelli.urls'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()
